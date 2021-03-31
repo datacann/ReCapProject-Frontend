@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Color } from '../models/color';
-
+    
 @Pipe({
   name: 'colorFilterPipe'
 })
