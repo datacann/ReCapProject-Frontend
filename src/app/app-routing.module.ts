@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CarDetailComponent } from './component/car-detail/car-detail.component';
+
+
 
 import { CarComponent } from "./component/car/car.component";
-import { CustomerComponent } from "./component/customer/customer.component";
-import { RentalComponent } from "./component/rental/rental.component";
+
 
 
 const routes: Routes = [
-  {path:"", pathMatch:"full", component:CarComponent},
-  {path:"cars", component:CarComponent},
-  {path:"cars/brand/:id", component:CarComponent},
-  {path:"cars/color/:id", component:CarComponent},
-  {path:"rentals", component:RentalComponent},
-  {path:"customers", component:CustomerComponent},
+  {path:"",pathMatch:"full",component:CarComponent},
+  {path:"cars",component:CarComponent},
+  {path:"cars/brand/:brandId",component:CarComponent},
+  {path:"cars/color/:colorId",component:CarComponent},
+  {path:"cars/getcardetail/:carId",component:CarDetailComponent},
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

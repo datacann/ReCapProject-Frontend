@@ -1,5 +1,21 @@
-<th>Renkler</th> 
-<ul class="list-group">
-    <li *ngFor="let color of colors" class="list-group-item">{{color.colorName}} </li>
-</ul>
 
+<br>
+<div class="mb-3">
+  <label for="filterText" class="form-label">Renk Ara</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
+   placeholder="renk ara">
+</div>
+<div *ngIf="filterText" class="alert alert-success">
+  {{filterText}} aradınız
+</div> 
+
+<ul class="list-group">
+ <li (click)="clearCurrentColor()" [class]="getAllColor()" 
+ routerLink="/cars" class="list-group-item list-group-item-primary">Renkler</li>
+ <li (click)="setCurrentColor(color)" 
+ routerLink="/cars/color/{{color.colorId}}" class="list-group-item list-group-item-warning" 
+ *ngFor="let color of colors |colorFilterPipe:filterText" [class]="getCurrentColor(color)">
+     {{ color.colorName }}
+ </li>
+
+</ul>
