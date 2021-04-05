@@ -1,24 +1,24 @@
- <div class="mb-3">
-  <div class="d-grid gap-2">
-  </div>  
-  <br>
-      <label for="filterText" class="form-label" >Marka Ara</label>
-      <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
-       placeholder="marka ara">
- </div>
+<div class="mb-3">
+    <div class="d-grid gap-2">
+    </div>
+    <br>
+    <label for="filterText" class="form-label">Marka Ara</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
+     placeholder="marka ara">
+</div>
 
 <div *ngIf="filterText" class="alert alert-success">
-      {{filterText}} aradınız
-</div> 
- 
- 
+    {{filterText}} aradınız
+</div>
+
+
 <ul class="list-group">
 
-    <li (click)="clearCurrentBrand()" [class]="getAllBrand()" 
-    routerLink="/cars" class="list-group-item list-group-item-primary">Tüm Markalar</li>
-    <li (click)="setCurrentBrand(brand)" 
-    routerLink="/cars/brand/{{brand.brandId}}" class="list-group-item list-group-item-warning" 
-    *ngFor="let brand of brands |brandFilterPipe:filterText " [class]="getCurrentBrand(brand)">
+    <li (click)="clearCurrentBrand()" [class]="getAllBrand()" routerLink="/cars"
+        class="list-group-item list-group-item-primary">Tüm Markalar</li>
+    <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.brandId}}"
+        class="list-group-item list-group-item-dark" *ngFor="let brand of brands |brandFilterPipe:filterText "
+        [class]="getCurrentBrand(brand)">
         {{ brand.brandName }}
     </li>
 

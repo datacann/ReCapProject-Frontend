@@ -6,5 +6,10 @@ export interface Rental{
     returnDate: Date;
     rentDate: Date;
     totalPrice: number;
+    brandName:string;
+    colorName:string;
+    modelYear:number;
+    dailyPrice:number;
+   
   
 }

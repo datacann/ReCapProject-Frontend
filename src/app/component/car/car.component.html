@@ -1,15 +1,31 @@
+
 <br>
+
+<div class="mb-3 mt-3">
+  <h6 class="text-primary">Ara</h6>
+<select class="form-select" [(ngModel)]="selectedOptionValue">
+  <option value="brand">Markaya göre ara</option>
+  <option value="modelYear">Yıla göre ara</option>
+  <option value="color">Renge göre ara</option>
+</select>
+
+
+
 <div class="mb-3">
   <label for="filterText" class="form-label">Araç Ara</label>
   <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
    placeholder="arama ifadesi giriniz">
 </div>
-<div *ngIf="filterText" class="alert alert-success">
+<div *ngIf="filterText" class="alert alert-success">  
   {{filterText}} aradınız
 </div>
 
+<app-car-filter></app-car-filter>
+<br>
+<br>
+
 <div class="row">
-<div class="card" style="width: 18rem;" *ngFor="let car of cars |carFilterPipe:filterText">
+<div class="card" style="width: 18rem;" *ngFor="let car of cars |carFilterPipe:filterText :selectedOptionValue">
     <img src="https://localhost:44393/{{car.imagePath}}" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title text-center">{{car.description  | uppercase }}</h5>
@@ -31,7 +47,8 @@
           routerLink="/cars/getcardetail/{{car.id}}" class="btn btn-success">Detaylar</button>
       </div>
       
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+     
     </div>
   </div>
+</div>
 </div>

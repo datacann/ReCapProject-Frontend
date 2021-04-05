@@ -4,6 +4,7 @@ import { Car } from 'src/app/models/car';
 import { CarImage } from 'src/app/models/car-image';
 import { CarDetailService } from 'src/app/services/car-detail.service';
 import { CarService } from 'src/app/services/car.service';
+import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
   selector: 'app-car-detail',
@@ -11,13 +12,17 @@ import { CarService } from 'src/app/services/car.service';
   styleUrls: ['./car-detail.component.css']
 })
 export class CarDetailComponent implements OnInit {
+  
   carDetail:Car
   carImages:CarImage[]
   imageBaseUrl = 'https://localhost:44393/';
+  rentalControl = false;
+  rentalMessage="";
 
   constructor(private carService:CarService, 
     private carDetailService:CarDetailService,  
-    private activatedRoute:ActivatedRoute) { }
+    private activatedRoute:ActivatedRoute,
+    private rentalService: RentalService,) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(param=>{
@@ -47,5 +52,4 @@ export class CarDetailComponent implements OnInit {
       
     })
   }
-  
 }

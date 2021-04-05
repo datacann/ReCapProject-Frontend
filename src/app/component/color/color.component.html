@@ -13,7 +13,7 @@
  <li (click)="clearCurrentColor()" [class]="getAllColor()" 
  routerLink="/cars" class="list-group-item list-group-item-primary">Renkler</li>
  <li (click)="setCurrentColor(color)" 
- routerLink="/cars/color/{{color.colorId}}" class="list-group-item list-group-item-warning" 
+ routerLink="/cars/color/{{color.colorId}}" class="list-group-item list-group-item-dark" 
  *ngFor="let color of colors |colorFilterPipe:filterText" [class]="getCurrentColor(color)">
      {{ color.colorName }}
  </li>

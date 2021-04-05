@@ -12,6 +12,11 @@ export class CarComponent implements OnInit {
   cars : Car[] = [];
   filterText="";
   dataLoaded=false;
+  selectedOptionValue:string;
+  filterByBrandName:string;
+  filterByModel:string;
+  filterByModelYear:string;
+  filterByColor:string;
 
   constructor(private carService: CarService, 
               private activatedRoute:ActivatedRoute) { }
@@ -56,6 +61,13 @@ export class CarComponent implements OnInit {
     this.carService.ImagesByCarId(carId).subscribe((response)=>{
       this.cars = response.data
     })
+  }
+
+  setVisible(){
+    if(!this.selectedOptionValue){
+      return "invisible"
+    }
+    return "visible"
   }
 }
 
