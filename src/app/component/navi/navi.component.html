@@ -12,25 +12,65 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li>
+
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Liste
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              
+              <li>
+                <a class="dropdown-item" routerLink="/cars/update"><h6>Araç Listesi</h6></a>
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="/brands/update"><h6>Marka Listesi</h6></a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="/colors/update"><h6>Renk Listesi</h6></a
+                >
+              </li>          
             </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
+          
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Ekle
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">            
+            <li>
+              <a class="dropdown-item" routerLink="/cars/add"><h6>Araç Ekle</h6></a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/brands/add"><h6>Marka Ekle</h6></a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/colors/add"><h6>Renk Ekle</h6></a>
+            </li>
+          </ul>
+      
+        </li>
         </ul>
         <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-success" routerLink="/login">Giriş Yap </button>
+          <button class="btn btn-success ms-1" routerLink="/register">Kayıt Ol </button>
         </form>
       </div>
     </div>
   </nav>
+
+  

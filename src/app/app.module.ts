@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import{ FormsModule, ReactiveFormsModule } from "@angular/forms"
 
 
@@ -22,7 +22,20 @@ import { CarFilterComponent } from './component/car-filter/car-filter.component'
 import { CardComponent } from './component/card/card.component';
 
 import {ToastrModule} from "ngx-toastr"
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { BrandAddComponent } from './component/brand-add/brand-add.component';
+import { CarAddComponent } from './component/car-add/car-add.component';
+import { ColorAddComponent } from './component/color-add/color-add.component';
+import { BrandUpdateComponent } from './component/brand-update/brand-update.component';
+// import { BrandListComponent } from './component/brand-list/brand-list.component';
+// import { ColorListComponent } from './component/color-list/color-list.component';
+import { ColorUpdateComponent } from './component/color-update/color-update.component';
+import { CarUpdateComponent } from './component/car-update/car-update.component';
+import { LoginComponent } from './component/login/login.component';
+import { AuthService } from './services/auth.service';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RegisterComponent } from './component/register/register.component';
+// import { CarListComponent } from './component/car-list/car-list.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +53,19 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
     CarFilterPipePipe,
     CarFilterComponent,
     CardComponent,
+    BrandAddComponent,
+    CarAddComponent,
+    ColorAddComponent,
+    BrandUpdateComponent,
+    // BrandListComponent,
+    // ColorListComponent,
+    ColorUpdateComponent,
+    CarUpdateComponent,
+    LoginComponent,
+    RegisterComponent,
+    // CarListComponent,
+    
+  
   ],
   imports: [BrowserModule, 
     AppRoutingModule, 
@@ -52,7 +78,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
       positionClass:"toast-bottom-right"
     })
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

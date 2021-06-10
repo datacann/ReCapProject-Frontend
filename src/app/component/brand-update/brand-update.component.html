@@ -1,0 +1,111 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="panel-footer text-center">
+      <span class="d-block p-1 bg-primary text-white" style="margin-top: 10px">
+        <h5>Markalar</h5>
+      </span>
+    </div>
+
+    <div *ngIf="dataLoaded == false" class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+
+    <table *ngIf="dataLoaded == true" id="brandTabla" class="table table-striped table-bordered" cellspacing="0"
+      width="100%">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Marka Adı</th>
+          <th style="text-align: center; width: 100px">
+
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let brand of brands">
+          <td>{{ brand.brandId }}</td>
+          <td>{{ brand.brandName }}</td>
+          <td>
+            <button type="button" class="btn btn-primary btn-xs formButton" data-bs-toggle="modal"
+              data-bs-target="#updateBrandModal" (click)="setSelectedBrand(brand)" tyle="margin-right: 16px">
+              Güncelle
+              <i class="fas fa-pen"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div
+  class="modal fade"
+  id="updateBrandModal"
+  tabindex="-1"
+  aria-labelledby="updateBrandModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateBrandModal">Marka Güncelle</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+
+
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="brandUpdateForm" *ngIf="brandUpdateForm">
+          <div class="row">
+            <div class="col-4">
+              <label for="brandId">Id</label>
+
+              <select
+        class="form-select"
+          [(ngModel)]="brandId"
+          aria-placeholder="Tüm Id"
+        >
+          <option selected>Id</option>
+          <option
+            *ngFor="let brand of brands"
+            [value]="brand.brandId"
+            [selected]="getSelectedBrandId(brand.brandId)"
+          >
+            {{ brand.brandId }}
+          </option>
+        </select>
+            </div>
+            <div class="col-8">
+              <label for="colorName">Marka</label>
+              <input
+                type="text"
+                class="form-control"
+                *ngIf="selectedBrand"
+                id="colorName"
+                formControlName="brandName"
+                value="{{ selectedBrand.brandName }}"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Kapat
+        </button>
+        <button
+          class="btn btn-primary"
+          (click)="update()"
+          data-bs-dismiss="modal"
+        >
+          Kaydet
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

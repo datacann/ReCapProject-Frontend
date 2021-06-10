@@ -1,0 +1,82 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="panel-footer text-center">
+      <span class="d-block p-1 bg-primary text-white" style="margin-top: 10px">
+        <h5>Araçlar</h5>
+      </span>
+    </div>
+
+    <div *ngIf="dataLoaded == false" class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    
+    <table *ngIf="dataLoaded == true" id="carTabla" class="table table-striped table-bordered" cellspacing="0"
+      width="100%">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Marka</th>
+          <th>Renk</th>
+          <th>Model</th>
+          <th>Açıklama</th>
+          <th style="text-align: center; width: 100px">
+
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let car of cars">
+          <td>{{ car.id }}</td>
+          <td>{{ car.brandName }}</td>
+          <td>{{ car.colorName }}</td>
+          <td>{{ car.modelYear}}</td>
+          <td>{{ car.description }}</td>
+          <td>
+            <button type="button" class="btn btn-primary btn-xs formButton" data-bs-toggle="modal"
+              data-bs-target="#updateCarModal" (click)="setSelectedCar(car)" tyle="margin-right: 16px">
+              Güncelle
+              <i class="fas fa-pen"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal fade" id="updateCarModal" tabindex="-1" aria-labelledby="updateCarModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateCarModal">Araba Güncelle</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="carUpdateForm" *ngIf="carUpdateForm">
+          <div class="row">
+            <div class="col-4">
+              <label for="id">Id</label>
+
+
+            </div>
+            <div class="col-8">
+              <label for="colorName">Marka</label>
+              <input type="text" class="form-control" *ngIf="selectedBrand" id="colorName" formControlName="brandName"
+                value="{{ selectedBrand.brandName }}" />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Kapat
+        </button>
+        <button class="btn btn-primary" (click)="update()" data-bs-dismiss="modal">
+          Kaydet
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

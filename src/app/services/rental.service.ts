@@ -11,17 +11,19 @@ import { ResponseModel } from '../models/responseModel';
 })
 export class RentalService {
 
-  apiUrl = 'https://localhost:44393/api/rentals/getrentaldetails';
+  apiUrl="https://localhost:44384/api/";
   rentableCar: RentalDetails
 
   constructor(private httpClient: HttpClient) { }
 
-  getRentals(): Observable<ListResponseModel<Rental>> {
-    return this.httpClient.get<ListResponseModel<Rental>>(this.apiUrl);
+  getRentals():Observable<ListResponseModel<Rental>>{
+    let newPath = this.apiUrl+"rentals/getall";
+    return this.httpClient.get<ListResponseModel<Rental>>(newPath);
   }
 
-  add(rental: Rental): Observable<ResponseModel> {
-    return this.httpClient.post<ResponseModel>(this.apiUrl + "addrental", rental);
+  addRental(rental:Rental):Observable<ResponseModel>{
+    let newPath = this.apiUrl+"rentals/add";
+    return this.httpClient.post<ResponseModel>(newPath,rental);
   }
 
   setRentableCar(rental: RentalDetails) {
@@ -32,9 +34,6 @@ export class RentalService {
     return this.rentableCar;
   }
 
-  addRental(rental:Rental){
-    let newPath = this.apiUrl+"rentals/add";
-    return this.httpClient.post(newPath,rental).subscribe();
-  }
+  
   
 }

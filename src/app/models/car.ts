@@ -9,4 +9,5 @@ export interface Car{
     description:string;
     imagePath:string;
     carImages:number;
+    carFindexPoint:number;
 }
